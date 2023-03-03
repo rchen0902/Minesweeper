@@ -61,7 +61,6 @@ public void displayLosingMessage()
       for(int c = 0; c < NUM_COLS; c++)
         if(mines.contains(buttons[r][c]) && buttons[r][c].clicked == false)
           buttons[r][c].mousePressed();
-    noLoop();
 }
 
 public void displayWinningMessage()
@@ -123,8 +122,10 @@ public void mousePressed()
       if(flagged == false)
         clicked = false;
     }
-    else if(mines.contains( this ))
+    else if(mines.contains( this )) {
       displayLosingMessage();
+      noLoop();
+    }
     else if(countMines(myRow, myCol) > 0)
       setLabel(countMines(myRow, myCol));
     else{ 
